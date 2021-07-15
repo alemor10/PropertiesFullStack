@@ -1,0 +1,31 @@
+version: '3'
+services:  
+  lumentbackend:
+    build: 
+      context: ./LumentAPI
+    command: 
+      sh -c 'npm run dev'
+    volumes:
+      - ./LumentAPI:/src
+      - /src/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=4000
+    ports:
+      - "4000:4000"
+  lumentclient:
+    build: 
+      context: ./lumentclient
+    command: 
+      sh -c 'npm run dev'
+    volumes:
+      - ./lumentclient:/src/app
+      - /src/app/node_modules   
+    environment:
+      - NODE_ENV=development
+      - PORT=3000    
+    ports:
+      - "3000:3000"
+    depends_on:
+      - lumentbackend
+
