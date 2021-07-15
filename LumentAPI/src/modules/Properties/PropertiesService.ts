@@ -1,5 +1,4 @@
 import {Request, Response} from 'express'
-import { deserializeArray, plainToClass } from 'class-transformer';
 
 // import data from '../../data/properties.json';
 import { IPropertyRawData, IPropertyResponse } from './types';
